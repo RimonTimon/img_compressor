@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="Compress PNG, JPG, WebP, and SVG images online without quality loss. Fast, secure, browser-based bulk image compression tool." />
+  <title>Free Online Image Compressor — Compress PNG, JPG, WebP | PixelPress</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+  <script defer src="app.js"></script>
+  <meta name="keywords" content="image compressor, compress image online, reduce image size, PNG compressor, JPG size reducer, WebP compressor, online photo optimizer" />
+  <link rel="canonical" href="https://imgcompressor-rimon.vercel.app/" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://imgcompressor-rimon.vercel.app/" />
+  <meta property="og:title" content="Free Online Image Compressor — Compress PNG, JPG, WebP | PixelPress" />
+  <meta property="og:description" content="Compress PNG, JPG, WebP, and SVG images online without quality loss. Fast, secure, browser-based bulk image compression tool." />
+  <meta property="og:site_name" content="PixelPress Image Compressor" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://imgcompressor-rimon.vercel.app/" />
+  <meta name="twitter:title" content="Free Online Image Compressor — Compress PNG, JPG, WebP | PixelPress" />
+  <meta name="twitter:description" content="Compress PNG, JPG, WebP, and SVG images online without quality loss. Fast, secure, browser-based bulk image compression tool." />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="PixelPress home">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+      <span>pixel<span class="brand-light">press</span></span>
+    </a>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-privacy" href="#privacy"><span class="status-dot"></span> Private by design</a>
+    </nav>
+  </header>
+
+  <main>
+<section class="hero">
+      <div class="eyebrow"><span class="eyebrow-icon">✳</span> FREE ONLINE IMAGE TOOL</div>
+      <h1>Smaller images.<br><span class="gradient-text">Bigger possibilities.</span></h1>
+      <p class="hero-copy">Compress images quickly in your browser. Your files stay on your device.</p>
+      <div class="trust-row">
+        <span><span class="check">✓</span> 100% free</span>
+        <span><span class="check">✓</span> No sign-up</span>
+        <span><span class="check">✓</span> Files stay on your device</span>
+      </div>
+    </section>
+<section class="workspace" aria-label="Image compression workspace">
+      <div class="workspace-top">
+        <div>
+          <span class="step-label">YOUR WORKSPACE</span>
+          <h2>Image compressor</h2>
+        </div>
+        <span class="format-pill">JPG · PNG · WEBP</span>
+      </div>
+
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose images or drop images here">
+        <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/gif,image/bmp,image/*" multiple hidden>
+        <div class="upload-illustration" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="5" y="8" width="38" height="32" rx="7" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="19" r="3.5" stroke="currentColor" stroke-width="2"/><path d="m8 34 10-9 7 6 6-5 9 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 3v13m-5-5 5-5 5 5" stroke="#7C5CFC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Drop your images here</h3>
+        <p>or <button id="browse-button" class="text-button" type="button">browse files</button> from your device</p>
+        <div class="upload-meta"><span>JPG</span><span>PNG</span><span>WEBP</span><span>AVIF*</span><span>GIF*</span></div>
+        <small>*Browser support varies. Animated images may be processed as a single frame.</small>
+      </div>
+
+      <details class="settings-panel settings-accordion">
+        <summary class="settings-heading">
+          <div><span class="step-label">SETTINGS</span><h3>Compression settings</h3></div>
+          <span class="settings-summary-right"><span class="settings-hint">Customize output</span><span class="settings-chevron" aria-hidden="true"></span></span>
+        </summary>
+        <div class="settings-content">
+        <div class="settings-content-top"><span>Customize output</span><button id="reset-settings" class="quiet-button" type="button">Reset</button></div>
+        <div class="settings-grid">
+          <div class="setting">
+            <label for="quality">Compression quality <strong id="quality-value">75%</strong></label>
+            <input id="quality" type="range" min="10" max="100" value="75" step="5">
+            <div class="range-ends"><span>Smaller file</span><span>Higher quality</span></div>
+          </div>
+          <div class="setting">
+            <label for="output-format">Output format</label>
+            <select id="output-format">
+              <option value="image/webp">WebP · Recommended</option>
+              <option value="image/jpeg">JPEG</option>
+              <option value="image/png">PNG · Usually larger</option>
+              <option value="original">Keep original format</option>
+            </select>
+          </div>
+          <div class="setting">
+            <label for="max-width">Maximum width</label>
+            <select id="max-width">
+              <option value="0">Original dimensions</option>
+              <option value="2560">2560 px</option>
+              <option value="1920">1920 px</option>
+              <option value="1600">1600 px</option>
+              <option value="1200">1200 px</option>
+              <option value="800">800 px</option>
+            </select>
+          </div>
+          <div class="setting">
+            <label for="max-size">Target file size</label>
+            <select id="max-size">
+              <option value="0">No target, use quality</option>
+              <option value="500">Under 500 KB (best effort)</option>
+              <option value="200">Under 200 KB (best effort)</option>
+              <option value="100">Under 100 KB (best effort)</option>
+            </select>
+          </div>
+        </div>
+        <label class="toggle-row" for="preserve-format">
+          <span><strong>Keep original format when possible</strong><small>Preserves the source format when the browser can encode it; this does not preserve metadata.</small></span>
+          <input id="preserve-format" type="checkbox">
+        </label>
+        </div>
+      </details>
+
+      <div class="queue-heading">
+        <div><span class="step-label">IMAGES</span><h3>Your images <span id="file-count" class="count-badge">0</span></h3></div>
+        <button id="clear-all" class="quiet-button" type="button" disabled>Clear all</button>
+      </div>
+      <div id="empty-state" class="empty-state">
+        <div class="empty-icon">▧</div>
+        <p>Your image queue is empty.</p>
+        <span>Add one or more images to get started.</span>
+      </div>
+      <div id="image-list" class="image-list" aria-live="polite"></div>
+      <div id="progress-area" class="progress-area" hidden>
+        <div class="progress-copy"><span id="progress-label">Preparing images…</span><span id="progress-percent">0%</span></div>
+        <div class="progress-track"><div id="progress-bar" class="progress-bar"></div></div>
+      </div>
+      <div class="action-row">
+        <button id="compress-button" class="primary-button" type="button" disabled><span>✦</span> Compress images</button>
+        <button id="download-all" class="secondary-button" type="button" disabled>Download all <span aria-hidden="true">↓</span></button>
+      </div>
+      <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="how-it-works" class="info-section">
+      <div class="section-kicker">NO COMPLEXITY. JUST RESULTS.</div>
+      <h2>Good images, less baggage.</h2>
+      <div class="benefit-grid">
+        <article class="benefit-card"><div class="benefit-icon purple">↘</div><h3>Less space</h3><p>Reduce file sizes to make uploads faster and storage go further.</p></article>
+        <article class="benefit-card"><div class="benefit-icon mint">⌁</div><h3>Private processing</h3><p>Your images are processed in your browser, not uploaded to our server.</p></article>
+        <article class="benefit-card"><div class="benefit-icon orange">⚡</div><h3>Batch in one go</h3><p>Add multiple images, apply settings, and download the results together.</p></article>
+      </div>
+    </section>
+
+    <section id="privacy" class="privacy-banner">
+      <div class="privacy-symbol">⌑</div>
+      <div><h3>Your files stay yours.</h3><p>Compression happens locally in your browser. This website does not send your selected images to its own server. The compression library is loaded from a third-party CDN.</p></div>
+    </section>
+<section id="faq" class="faq-section">
+      <div class="section-kicker">QUICK ANSWERS</div>
+      <h2>Frequently asked questions</h2>
+      <details><summary>Is PixelPress really free?</summary><p>Yes. This version has no account, usage fee, or paid API. Hosting and domain costs may apply if you choose paid services.</p></details>
+      <details><summary>Are my images uploaded?</summary><p>No. Image processing runs in your browser. Your browser downloads the compression library from a CDN when the page loads, but your image files are not sent to that CDN by this app.</p></details>
+      <details><summary>Why did my PNG get larger?</summary><p>PNG is a lossless format. Some images do not compress well, and converting formats can change transparency or increase file size. Try WebP for smaller files when appropriate.</p></details>
+      <details><summary>Does it support every image format?</summary><p>Support depends on your browser. The app accepts common image files, but animated GIFs, HEIC, SVG, and some AVIF files may not behave as expected. This tool is intended for raster images.</p></details>
+      <details><summary>Will the result always be smaller?</summary><p>No. Compression results depend on the image, output format, dimensions, and browser encoder. The app keeps the output even if it is larger, and shows the size difference.</p></details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span>pixel<span class="brand-light">press</span></span></a>
+    <nav class="footer-links" aria-label="Legal and company links">
+      <a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy</a><a href="cookie-policy.html">Cookies</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a>
+    </nav>
+    <span>© <span id="year"></span> PixelPress</span>
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

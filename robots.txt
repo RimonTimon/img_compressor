@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://imgcompressor-rimon.vercel.app/sitemap.xml
